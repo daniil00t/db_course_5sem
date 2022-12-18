@@ -4,7 +4,14 @@ import random
 
 fake = Faker()
 
-header = ['id', 'type', 'section', 'search_indexed', 'views']
+#      Column     |  Type   | Collation | Nullable |               Default                
+# ----------------+---------+-----------+----------+--------------------------------------
+#  id             | integer |           | not null | nextval('articles_id_seq'::regclass)
+#  type           | text    |           | not null | 
+#  section        | integer |           | not null | 
+#  search_indexed | boolean |           | not null | 
+#  views          | integer |           | not null | 
+
 types = ['default', 'official', 'private', 'internal']
 
 def main():
