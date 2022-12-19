@@ -22,8 +22,8 @@ def main():
     now = datetime.now()
     change_at = fake.date_time_between(default, now)
 
-    row = (change_at, random.randint(1, 10000), types[random.randint(0, 2)], random.randint(1, 10000), random.randint(1, 150))
-    cur.execute('insert into history (change_at, change_by, type, article_id, contribution) values (%s, %s, %s, %s, %s);', row)
+    row = (change_at, random.randint(1, 10000), types[random.randint(0, 2)], random.randint(1, 99999), random.randint(1, 150))
+    cur.execute('insert into history (change_at, change_by, type, translation_id, contribution) values (%s, %s, %s, %s, %s);', row)
 
   conn.commit()
 

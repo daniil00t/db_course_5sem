@@ -11,7 +11,6 @@ create table articles (
 	type text not null check (type in ('default', 'official', 'private', 'internal')),
 	section integer not null,
 	search_indexed boolean not null,
-	views integer not null check (views > 0),
 	constraint "articles_to_section" 
 		foreign key ("section") 
 		references "sections"("id")
@@ -55,14 +54,14 @@ create table history (
 	change_at timestamp not null check(change_at > '2022-12-01'),
 	change_by integer not null,
 	type text not null check (type in ('create', 'update', 'delete')),
-	article_id integer not null,
+	translation_id integer not null,
 	contribution integer not null default 0 check (contribution >= 0),
 	constraint "history_to_users" 
 		foreign key ("change_by") 
 		references "users"("id"),
-	constraint "history_to_article" 
-		foreign key ("article_id") 
-		references "articles"("id")
+	constraint "history_to_translation" 
+		foreign key ("translation_id") 
+		references "translations"("id")
 );
 
 
@@ -96,6 +95,7 @@ create table translations (
 	lang integer not null,
 	byte_length integer not null,
 	first_source boolean not null default false,
+	views integer not null check (views >= 0),
 	constraint "translatations_to_article" 
 		foreign key ("article_id") 
 		references "articles"("id"),

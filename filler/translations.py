@@ -23,9 +23,10 @@ def main():
     lang = random.randint(1, 249)
     byte_length = len(data) * 8
     first_source = True
-    row = (i, title, short_description, data, lang, byte_length, first_source)
+    views = random.randint(1, 100000)
+    row = (i, title, short_description, data, lang, byte_length, first_source, views)
     
-    cur.execute('insert into translations (article_id, title, short_description, data, lang, byte_length, first_source) values (%s, %s, %s, %s, %s, %s, %s);', row)
+    cur.execute('insert into translations (article_id, title, short_description, data, lang, byte_length, first_source, views) values (%s, %s, %s, %s, %s, %s, %s, %s);', row)
 
 
   for i in range(90000):
@@ -35,9 +36,10 @@ def main():
     lang = random.randint(1, 249)
     byte_length = len(data) * 8
     first_source = False
-    row = (random.randint(1, 10000), title, short_description, data, lang, byte_length, first_source)
+    views = random.randint(1, 100000)
+    row = (random.randint(1, 10000), title, short_description, data, lang, byte_length, first_source, views)
     
-    cur.execute('insert into translations (article_id, title, short_description, data, lang, byte_length, first_source) values (%s, %s, %s, %s, %s, %s, %s);', row)
+    cur.execute('insert into translations (article_id, title, short_description, data, lang, byte_length, first_source, views) values (%s, %s, %s, %s, %s, %s, %s, %s);', row)
 
   conn.commit()
 
