@@ -1,9 +1,23 @@
--- вывести всех пользоватей, которые только только редактировали статьи
+-- Задача: Найти всех пользователей, которые ТОЛЬКО редактировали статьи
 
+-- здесь просто можно выделить всех пользователей, которые удаляли и создавали статьи
+-- а потом просто написать except, потом заджоинить их с табличкой пользововатей
+
+with only_update as (
+  select 
+    change_by
+  from history
+  except
+  select
+    change_by
+  from history
+  where type in ('create', 'delete')
+)
 select
-  users.id
-from history
-inner join users on users.id = history.change_by
-group by users.id
-having type = 'upadte' and type not in ('create', 'delete')
-limit 200;
+  id,
+  display_name,
+  login,
+  email
+from users
+inner join only_update on only_update.change_by = users.id
+order by id
