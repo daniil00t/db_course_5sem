@@ -1,6 +1,5 @@
 from connector import *
 from faker import Faker
-import random
 
 fake = Faker()
 
