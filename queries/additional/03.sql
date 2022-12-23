@@ -6,20 +6,20 @@
 -- пусть пользователь задал регулярку %(C|c)ould%
 
 -- OR
-with const as (
-  select '%(C|c)ould%' as regexp
-)
-select
-  id,
-  data,
-  title,
-  short_description
-from translations
-inner join const on 1 = 1
-where
-  title similar to const.regexp or
-  short_description similar to const.regexp or
-  data similar to const.regexp;
+-- with const as (
+--   select '%(C|c)ould%' as regexp
+-- )
+-- select
+--   id,
+--   data,
+--   title,
+--   short_descriptions
+-- from translations
+-- inner join const on 1 = 1
+-- where
+--   title similar to const.regexp or
+--   short_description similar to const.regexp or
+--   data similar to const.regexp;
 
 
 -- AND
